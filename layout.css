@@ -1,0 +1,107 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap');
+    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-image: url(./image.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;    background-attachment: fixed;
+        background-position: center;
+    
+
+}
+
+    #quiz {
+        background-color: rgb(175, 131, 217);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        font-family: "Edu AU VIC WA NT Pre", serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: #6c4a97; ;
+        text-decoration-line: underline;
+        text-decoration-style: double;
+
+    }
+
+    .question {
+        margin-bottom: 20px;
+        display: none; /* Hidden by default */
+        font-family: "Edu AU VIC WA NT Pre", serif;
+        font-weight: 400;
+        font-size: 1.2rem;
+    }
+
+    .question.active {
+        display: block; /* Display only the active question */
+    }
+
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+
+    .options li {
+        margin: 10px 0;
+    }
+
+    .options button {
+        background-color: #6c4a97;
+        color: #c1b5d1;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .options button:hover {
+        background-color: #511f83;
+        color:#a383cd;
+    }
+
+    .options button:disabled {
+        background-color: #b53fc7;
+        cursor: not-allowed;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .nav-buttons button {
+        background-color: #511f83;
+        color: #a383cd;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-buttons button:disabled {
+        background-color: #d3d3d3;
+        color: #511f83;
+        cursor: not-allowed;
+    }
+
+    .nav-buttons button:hover:enabled {
+        background-color: #ad92d0;
+        color: #511f83;
+    }
+
+    #completion {
+        text-align: center;
+        font-family: "Edu AU VIC WA NT Pre", serif;
+    }
+

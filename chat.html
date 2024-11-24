@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple-Choice Quiz</title>
+    <link rel="stylesheet" href="./layout.css" type="text/css">
+</head>
+<body>
+    <h1>Multiple-Choice Quiz</h1>
+
+    <div id="quiz">
+        <!-- Question 1 -->
+        <div class="question active" id="q1">
+            <p>Question 1: What is the capital of France?</p>
+            <ul class="options">
+                <li><button onclick="checkAnswer(1, 'Paris', this)">Paris</button></li>
+                <li><button onclick="checkAnswer(1, 'London', this)">London</button></li>
+                <li><button onclick="checkAnswer(1, 'Berlin', this)">Berlin</button></li>
+                <li><button onclick="checkAnswer(1, 'Rome', this)">Rome</button></li>
+            </ul>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question" id="q2">
+            <p>Question 2: What is 5 + 3?</p>
+            <ul class="options">
+                <li><button onclick="checkAnswer(2, '8', this)">8</button></li>
+                <li><button onclick="checkAnswer(2, '9', this)">9</button></li>
+                <li><button onclick="checkAnswer(2, '10', this)">10</button></li>
+                <li><button onclick="checkAnswer(2, '7', this)">7</button></li>
+            </ul>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question" id="q3">
+            <p>Question 3: Who discovered gravity?</p>
+            <ul class="options">
+                <li><button onclick="checkAnswer(3, 'Newton', this)">Newton</button></li>
+                <li><button onclick="checkAnswer(3, 'Einstein', this)">Einstein</button></li>
+                <li><button onclick="checkAnswer(3, 'Galileo', this)">Galileo</button></li>
+                <li><button onclick="checkAnswer(3, 'Copernicus', this)">Copernicus</button></li>
+            </ul>
+        </div>
+
+         <!-- Question 4 -->
+         <div class="question" id="q4">
+            <p>Question 4: What is the boiling point of water (in Celsius)?</p>
+            <ul class="options">
+                <li><button onclick="checkAnswer(4, '50', this)">50</button></li>
+                <li><button onclick="checkAnswer(4, '75', this)">75</button></li>
+                <li><button onclick="checkAnswer(4, '100', this)">100</button></li>
+                <li><button onclick="checkAnswer(4, '125', this)">125</button></li>
+            </ul>
+        </div>
+
+         <!-- Question 5 -->
+         <div class="question" id="q5">
+            <p>Question 5: Who built the first programmable computer?</p>
+            <ul class="options">
+                <li><button onclick="checkAnswer(5, 'Konrad Zuse', this)">Konrad Zuse</button></li>
+                <li><button onclick="checkAnswer(5, 'Alan Turing', this)">Alan Turing</button></li>
+                <li><button onclick="checkAnswer(5, 'John von Neumann', this)">John von Neumann</button></li>
+                <li><button onclick="checkAnswer(5, 'Charles Babbage', this)">Charles Babbage</button></li>
+            </ul>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+        </div>
+
+        <!-- Completion Message -->
+        <div id="completion">
+            
+        </div>
+    </div>
+    <script> // Correct answers for each question
+        const answers = {
+           a : 'Paris',
+           b : '8',
+           c: 'Newton',
+           d:'100',
+           e:'Charles Babbage'
+       };
+       
+       let currentQuestion = 1;
+       score=10
+       
+       
+       function checkAnswer(questionNumber, selectedAnswer, button) {
+           
+       
+           if (answers.a='paris') {
+               score++; // Increment score if correct
+           }
+           if(answers.b='8'){
+               score++
+           }
+           if(answers.c='newton'){
+               score++
+           }
+           if(answers.d='100'){
+               score++
+           }
+           if(answers.e='Charles Babbage'){
+               score++
+           }
+       
+           // Disable all buttons for the current question
+           const buttons = button.parentElement.parentElement.querySelectorAll("button");
+           buttons.forEach((btn) => (btn.disabled = true));
+       
+           // Enable the "Next" button
+           document.getElementById("nextBtn").disabled = false;
+       }
+       
+       function nextQuestion() {
+           // Hide current question
+           document.getElementById(`q${currentQuestion}`).classList.remove("active");
+       
+           // Show next question or completion message
+           currentQuestion++;
+            const nextQuestion = document.getElementById(`q${currentQuestion}`);
+            if (nextQuestion) {
+                nextQuestion.classList.add("active");
+                document.getElementById("prevBtn").disabled = currentQuestion === 1;
+            } else {
+               // Show completion message
+               document.getElementById("completion").style.display = "block";
+               document.getElementById("completion").innerHTML = `
+                   <h2>Congratulations! You've completed the quiz.</h2>
+                   <p>Your score is: ${score}<p/>
+                   <p>and your precentage is:${score/answers.length*100}%<p/>`
+               document.querySelector(".nav-buttons").style.display = "none";
+           }
+       
+           // Disable the "Next" button until the user answers the question
+           document.getElementById("nextBtn").disabled = true;
+        }
+       
+       function prevQuestion() {
+           // Hide current question
+           document.getElementById(`q${currentQuestion}`).classList.remove("active");
+       
+           // Show previous question
+           currentQuestion--;
+           document.getElementById(`q${currentQuestion}`).classList.add("active");
+       
+           // Enable the "Next" button
+           document.getElementById("nextBtn").disabled = false;
+       
+           // Disable the "Previous" button if on the first question
+           document.getElementById("prevBtn").disabled = currentQuestion === 1;
+       }</script>
+<!-- 
+    <script type="module" src="./app.js"></script> -->
+</body>
+</html>
+

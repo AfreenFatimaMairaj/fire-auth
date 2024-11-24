@@ -1,0 +1,70 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(./image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Styling */
+.landing-container {
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+/* Header Styling */
+.header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color:  #6c4a97;
+}
+
+/* Quiz Cards */
+.quiz-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.quiz-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.quiz-card p {
+    font-size: 14px;
+    color: #afa3c0;
+}
+
+.quiz-card:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.3);
+}
